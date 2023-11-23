@@ -35,15 +35,16 @@ public class Solution {
         Scanner scan = new Scanner(System.in);
         String s = scan.nextLine();
         // Write your code here.
-        // Tokenize the input string using regex to consider various delimiters
-        String[] tokens = s.trim().split("[ ,!,?._'@]+");
+        
+        // Create a StringTokenizer with the specified delimiters
+        StringTokenizer tokenizer = new StringTokenizer(s, " ,!?'._@");
 
         // Print the number of tokens
-        System.out.println(tokens.length);
+        System.out.println(tokenizer.countTokens());
 
         // Print each token on a new line
-        for (String token : tokens) {
-            System.out.println(token);
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
         }
 
         scan.close();
