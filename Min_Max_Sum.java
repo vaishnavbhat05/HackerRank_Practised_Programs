@@ -48,7 +48,6 @@
 
 import java.io.*;
 import java.math.*;
-import java.security.*;
 import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
@@ -63,14 +62,30 @@ class Result {
     /*
      * Complete the 'miniMaxSum' function below.
      *
-     * The function accepts INTEGER_ARRAY arr as parameter.
+     * The function accepts INTEGER_ARRAY arr as a parameter.
      */
 
     public static void miniMaxSum(List<Integer> arr) {
-    // Write your code here
-
+        // Initialize variables to store minimum and maximum sums
+        long minSum = Long.MAX_VALUE;
+        long maxSum = Long.MIN_VALUE;
+        
+        // Calculate the sum of all elements
+        long totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
+        }
+        
+        // Find the minimum and maximum sums
+        for (int num : arr) {
+            long currentSum = totalSum - num;
+            minSum = Math.min(minSum, currentSum);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+        
+        // Print the results
+        System.out.println(minSum + " " + maxSum);
     }
-
 }
 
 public class Solution {
@@ -86,3 +101,4 @@ public class Solution {
         bufferedReader.close();
     }
 }
+
